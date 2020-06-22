@@ -59,7 +59,7 @@ public class NBody{
             StdDraw.setScale(-Radius,Radius);
             StdDraw.clear();
             StdDraw.picture(0,0,imageToDraw);
-            for(Body singleObject: Objects){
+            for(planet singleObject: Objects){
                 singleObject.draw();
             }
             StdDraw.show();
@@ -67,12 +67,12 @@ public class NBody{
 
         }
         
-        StdOut.printf("%d\n", planets.length);
-        StdOut.printf("%.2e\n", radius);
-        for (int i = 0; i < planets.length; i++) {
+        StdOut.printf("%d\n", length);
+        StdOut.printf("%.2e\n", Radius);
+        for (int i = 0; i < length; i++) {
             StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
-                    planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
-                    planets[i].yyVel, planets[i].mass, planets[i].imgFileName);
+                    Objects[i].xxPos, Objects[i].yyPos, Objects[i].xxVel,
+                    Objects[i].yyVel, Objects[i].mass, Objects[i].imgFileName);
         }
     }
 }
