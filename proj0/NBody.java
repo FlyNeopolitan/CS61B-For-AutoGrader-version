@@ -59,7 +59,7 @@ public class NBody{
             StdDraw.setScale(-Radius,Radius);
             StdDraw.clear();
             StdDraw.picture(0,0,imageToDraw);
-            for(planet singleObject: Objects){
+            for(Planet singleObject: Objects){
                 singleObject.draw();
             }
             StdDraw.show();
