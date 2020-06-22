@@ -6,7 +6,7 @@ public class NBody{
         return Radius;
     }
 
-    public static Planet[] readBodies(String FileName){
+    public static Planet[] readPlanets(String FileName){
         In in=new In(FileName);
         int number=in.readInt();
         Planet[]Objects=new Planet[number];
@@ -28,9 +28,9 @@ public class NBody{
         double dt=Double.parseDouble(args[1]);
         String FileName=args[2];
         double Radius=readRadius(FileName);
-        int length= readBodies(FileName).length;
+        int length= readPlanets(FileName).length;
         Planet[] Objects=new Planet[length];
-        System.arraycopy(readBodies(FileName),0,Objects,0,length);
+        System.arraycopy(readPlanets(FileName),0,Objects,0,length);
         double time;
 
         /*String imageToDraw = "images/starfield.jpg";
@@ -67,12 +67,12 @@ public class NBody{
 
         }
         
-        StdOut.printf("%d\n", bodies.length);
+        StdOut.printf("%d\n", planets.length);
         StdOut.printf("%.2e\n", radius);
-        for (int i = 0; i < bodies.length; i++) {
+        for (int i = 0; i < planets.length; i++) {
             StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
-                    bodies[i].xxPos, bodies[i].yyPos, bodies[i].xxVel,
-                    bodies[i].yyVel, bodies[i].mass, bodies[i].imgFileName);
+                    planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
+                    planets[i].yyVel, planets[i].mass, planets[i].imgFileName);
         }
     }
 }
