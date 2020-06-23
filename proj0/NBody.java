@@ -9,7 +9,7 @@ public class NBody{
     public static Planet[] readPlanets(String FileName){
         In in=new In(FileName);
         int number=in.readInt();
-        Planet[]Objects=new Planet[number];
+        Planet[]Planets=new Planet[number];
         double Radius=in.readDouble();
         for(int i=0;i<number;i++){
             double xP=in.readDouble();
@@ -18,9 +18,9 @@ public class NBody{
             double yV=in.readDouble();
             double m=in.readDouble();
             String img=in.readString();
-            Objects[i]=new Planet(xP,yP,xV,yV,m,img);
+            Planets[i]=new Planet(xP,yP,xV,yV,m,img);
         }
-        return Objects;
+        return Planets;
     }
 
     public static void main(String[] args){
@@ -29,8 +29,8 @@ public class NBody{
         String FileName=args[2];
         double Radius=readRadius(FileName);
         int length= readPlanets(FileName).length;
-        Planet[] Objects=new Planet[length];
-        System.arraycopy(readPlanets(FileName),0,Objects,0,length);
+        Planet[] Planets=new Planet[length];
+        System.arraycopy(readPlanets(FileName),0,Planets,0,length);
         double time;
 
         /*String imageToDraw = "images/starfield.jpg";
@@ -47,11 +47,11 @@ public class NBody{
             double[] Xforces=new double[length];
             double[] Yforces=new double[length];
             for(int i=0;i<length;i++){
-                Xforces[i]=Objects[i].calcNetForceExertedByX(Objects);
-                Yforces[i]=Objects[i].calcNetForceExertedByY(Objects);
+                Xforces[i]=Planets[i].calcNetForceExertedByX(Planets);
+                Yforces[i]=Planets[i].calcNetForceExertedByY(Planets);
             }
             for(int i=0;i<length;i++){
-                Objects[i].update(dt,Xforces[i],Yforces[i]);
+                Planets[i].update(dt,Xforces[i],Yforces[i]);
             }
 
             String imageToDraw = "images/starfield.jpg";
@@ -59,7 +59,7 @@ public class NBody{
             StdDraw.setScale(-Radius,Radius);
             StdDraw.clear();
             StdDraw.picture(0,0,imageToDraw);
-            for(Planet singleObject: Objects){
+            for(Planet singleObject: Planets){
                 singleObject.draw();
             }
             StdDraw.show();
@@ -71,8 +71,8 @@ public class NBody{
         StdOut.printf("%.2e\n", Radius);
         for (int i = 0; i < length; i++) {
             StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
-                    Objects[i].xxPos, Objects[i].yyPos, Objects[i].xxVel,
-                    Objects[i].yyVel, Objects[i].mass, Objects[i].imgFileName);
+                    Planets[i].xxPos, Planets[i].yyPos, Planets[i].xxVel,
+                    Planets[i].yyVel, Planets[i].mass, Planets[i].imgFileName);
         }
     }
 }
